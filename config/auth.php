@@ -41,6 +41,12 @@ return [
             'provider' => 'users',
         ],
 
+        'admin' => [  //Our Custom guard name "admin"
+            'driver' => 'session',  
+            'provider' => 'admins',  // Our authenticate table/model name
+        ],
+
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -70,6 +76,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
+        'admins' => [  
+            'driver' => 'eloquent',  //Our custom eloquent
+            'model' => App\Admin::class, //Our custom guard model slug
+        ],
 
         // 'users' => [
         //     'driver' => 'database',
@@ -95,6 +105,13 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'admins' => [ 
+            'provider' => 'admins',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
