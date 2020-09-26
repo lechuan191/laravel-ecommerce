@@ -17,6 +17,13 @@ class AdminController extends Controller
     {
         return view('admin.home');
     }
+    public function showChangePassword(){
+        return view('admin.auth.profile');
+    }
+    public function changePassword(Request $request)
+    {
+        
+    }
     public function logout()
     {
         Auth::logout();

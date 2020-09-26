@@ -59,5 +59,6 @@
 <script src="{{ asset('backend/dist/js/adminlte.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('backend/dist/js/demo.js')}}"></script>
+@include('admin.layouts.message')
 </body>
 </html>
