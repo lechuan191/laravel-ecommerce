@@ -5,8 +5,8 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6" style="display: flex;justify-content: space-between;">
-          <h1>Category</h1>
-          <a class="btn btn-primary btn-sm" href="{{ route('category.create') }}"><i class="fas fa-plus"></i> Add Category</a>
+          <h1>Brand</h1>
+          <a class="btn btn-primary btn-sm" href="{{ route('brand.create') }}"><i class="fas fa-plus"></i> Add Brand</a>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -33,18 +33,21 @@
                 <tr>
                   <th>ID</th>
                   <th>Name</th>
+                    <th>Logo</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                  @foreach ($cate as $item)
+                  @foreach ($brand as $item)
 
                 <tr>
                   <td>{{ $item->id }}</td>
-                  <td>{{ $item->category_name }}</td>
+                  <td>{{ $item->brand_name }}</td>
+{{--                    <td> <img src="{{ URL::to($item->brand_logo) }}" height="50px;" width="150px;" alt=""> </td>--}}
+                    <td> <img src="{{url('upload/brand/',$item->brand_logo)}}" height="50px;" width="150px;"> </td>
                   <td class="text-center">
-                    <a class="btn btn-info btn-sm" href="{{route('category.edit',$item->id)}}"><i class="fas fa-pencil-alt"></i> Edit</a>
-                    <a class="btn btn-danger btn-sm" id="deleteRecord" href="{{route('category.destroy',$item->id)}}"><i class="fas fa-trash"></i> Delete</a>                    {{-- <form action="{{url('/admin/category/delete-category',$item->id)}}" method="PUT">
+                    <a class="btn btn-info btn-sm" href="{{route('brand.edit',$item->id)}}"><i class="fas fa-pencil-alt"></i> Edit</a>
+                    <a class="btn btn-danger btn-sm " id="deleteRecord" href="{{route('brand.destroy',$item->id)}}"><i class="fas fa-trash"></i> Delete</a>                    {{-- <form action="{{url('/admin/category/delete-category',$item->id)}}" method="PUT">
                       @csrf
                       @method('DELETE')
                     <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i>Delete</button>
@@ -68,6 +71,7 @@
                 <tr>
                   <th>ID</th>
                   <th>Name</th>
+                    <th>Logo</th>
                     <th>Action</th>
                 </tr>
                 </tfoot>

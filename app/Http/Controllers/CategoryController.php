@@ -47,7 +47,8 @@ class CategoryController extends Controller
             'messege'=>'Successfully Add Category',
             'alert-type'=>'success'
         ];
-        return redirect()->route('category.index')->with($messege);    }
+        return redirect()->route('category.index')->with($messege);
+    }
 
     /**
      * Display the specified resource.
@@ -68,7 +69,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cateDetails = Category::where('id',$id)->first();
+        return view('admin.category.edit', compact('cateDetails'));
+
     }
 
     /**
@@ -80,7 +83,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cateDetails = Category::find($id);
+        $cateDetails->category_name = $request->name;
+        $cateDetails->save();
+        $messege=[
+            'messege'=>'Successfully Update Category',
+            'alert-type'=>'success'
+        ];
+        return  redirect()->route('category.index')->with($messege);
     }
 
     /**
@@ -91,6 +101,12 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Category::destroy($id);
+        $messege=[
+            'messege'=>'Successfully Delete Category',
+            'alert-type'=>'success'
+        ];
+        return  redirect()->route('category.index')->with($messege);
+
     }
 }

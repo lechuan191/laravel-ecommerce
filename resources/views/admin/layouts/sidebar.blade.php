@@ -7,7 +7,7 @@
            style="opacity: .8">
       <span class="brand-text font-weight-light">AdminLTE 3</span>
     </a>
-  
+
     <!-- Sidebar -->
     <div class="sidebar">
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
@@ -52,7 +52,7 @@
               </li>
             </ul>
           </li>
-          
+
           <li class="nav-header">EXAMPLES</li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
@@ -75,21 +75,46 @@
                   <p>Category Add</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="{{ url('/admin/category/edit-category') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Category Edit</p>
-                </a>
-              </li>
-              <li class="nav-item">
+
+             <!-- <li class="nav-item">
                 <a href="../examples/project-detail.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Category Detail</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
-  
+            <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-list-ul"></i>
+                    <p>
+                        Brand
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ url('/admin/brand') }}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Brand List</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/admin/brand/add-brand') }}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Brand Add</p>
+                        </a>
+                    </li>
+
+                    <!-- <li class="nav-item">
+                       <a href="../examples/project-detail.html" class="nav-link">
+                         <i class="far fa-circle nav-icon"></i>
+                         <p>Category Detail</p>
+                       </a>
+                     </li> -->
+                </ul>
+            </li>
+
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="fas fa-list-ul"></i>
@@ -111,12 +136,7 @@
                   <p>Product Add</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="../examples/project-edit.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Product Edit</p>
-                </a>
-              </li>
+
               <li class="nav-item">
                 <a href="../examples/project-detail.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -125,7 +145,7 @@
               </li>
             </ul>
           </li>
-  
+
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="fas fa-list-ul"></i>
@@ -147,12 +167,7 @@
                   <p>Coupons Add</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="../examples/project-edit.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Coupons Edit</p>
-                </a>
-              </li>
+
               <li class="nav-item">
                 <a href="../examples/project-detail.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -161,7 +176,7 @@
               </li>
             </ul>
           </li>
-  
+
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="fas fa-sliders-h-square"></i>
@@ -183,12 +198,7 @@
                   <p>Slide Add</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="{{ url('/admin/category/edit-slide') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Slide Edit</p>
-                </a>
-              </li>
+
               <li class="nav-item">
                 <a href="../examples/project-detail.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -197,7 +207,7 @@
               </li>
             </ul>
           </li>
-  
+
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="fas fa-users"></i>
@@ -219,12 +229,7 @@
                   <p>User Add</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="../examples/project-edit.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>User Edit</p>
-                </a>
-              </li>
+
               <li class="nav-item">
                 <a href="../examples/project-detail.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -233,7 +238,7 @@
               </li>
             </ul>
           </li>
-  
+
           <li class="nav-header">MISCELLANEOUS</li>
           <li class="nav-item">
             <a href="https://adminlte.io/docs/3.0" class="nav-link">
