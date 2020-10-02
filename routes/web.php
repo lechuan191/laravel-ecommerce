@@ -46,4 +46,13 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/edit-brand/{id}', 'BrandController@update')->name('brand.update');
         Route::get('/delete-brand/{id}','BrandController@destroy')->name('brand.destroy');
     });
+
+    Route::group(['prefix' => 'subcategory'], function () {
+        Route::get('/', 'SubCategoryController@index')->name('subcategory.index');
+        Route::get('/add-subcategory', 'SubCategoryController@create')->name('subcategory.create');
+        Route::post('/add-subcategory', 'SubCategoryController@store')->name('subcategory.store');
+        Route::get('/edit-subcategory/{id}', 'SubCategoryController@edit')->name('subcategory.edit');
+        Route::post('/edit-subcategory/{id}', 'SubCategoryController@update')->name('subcategory.update');
+        Route::get('/delete-subcategory/{id}','SubCategoryController@destroy')->name('subcategory.destroy');
+    });
 });
