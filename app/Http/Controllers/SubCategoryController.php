@@ -47,14 +47,14 @@ class SubCategoryController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'category_id' => 'required',
+            'category_id1' => 'required',
             'subcategory_name' => 'required',
         ],
         [
             'required' => ':attribute Không được để trống',
         ]);
         $data = array();
-        $data['category_id'] = $request->category_id;
+        $data['category_id'] = $request->category_id1;
         $data['subcategory_name'] = $request->subcategory_name;
         DB::table('sub_categories')->insert($data);
         $messege=[
@@ -99,7 +99,7 @@ class SubCategoryController extends Controller
     public function update(Request $request, $id)
     {
         $data = array();
-        $data['category_id'] = $request->category_id;
+        $data['category_id'] = $request->category_id1;
         $data['subcategory_name'] = $request->subcategory_name;
         DB::table('sub_categories')->where('id',$id)->update($data);
         $messege=[

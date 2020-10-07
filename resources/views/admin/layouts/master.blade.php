@@ -15,11 +15,13 @@
   @yield('css')
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <!-- summernote -->
+    <link rel="stylesheet" href="{{ asset('backend/plugins/summernote/summernote-bs4.css') }}">
   <!-- Toastr -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{ asset('backend/dist/css/adminlte.min.css')}}">
-  <!-- Google Font: Source Sans Pro -->
+    <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
 </head>
@@ -69,7 +71,18 @@
 <script src="{{ asset('backend/dist/js/adminlte.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('backend/dist/js/demo.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"></script>
 @include('admin.layouts.message')
+
+<script src="{{ asset('backend/dist/js/main.js')}}"></script>
+
+<!-- Summernote -->
+<script src="{{ asset('backend/plugins/summernote/summernote-bs4.min.js')}}"></script>
+<script>
+    $(function () {
+        $('.textarea').summernote();
+    })
+</script>
 
 </body>
 </html>

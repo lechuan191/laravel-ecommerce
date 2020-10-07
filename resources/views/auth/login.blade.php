@@ -1,4 +1,4 @@
-{{-- @extends('layouts.app')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -70,8 +70,8 @@
         </div>
     </div>
 </div>
-@endsection --}}
-@extends('layouts.master')
+@endsection
+{{-- @extends('layouts.master')
 <!-- Begin Li's Breadcrumb Area -->
 @section('breadcrumb')
 <div class="breadcrumb-area">
@@ -159,4 +159,4 @@
     </div>
 </div>
 <!-- Login Content Area End Here -->
-@endsection
+@endsection --}}

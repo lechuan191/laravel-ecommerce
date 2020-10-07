@@ -46,7 +46,7 @@
             </div>
               <div class="form-group">
                   <label>Category Name</label>
-                  <select class="form-control" name="category_id">
+                  <select class="form-control" name="category_id1">
                       @foreach($cateDetails as $row)
                           <option value="{{ $row->id }}"
                              @if($row->id==$subcateDetails->category_id) selected @endif>{{ $row->category_name }}
