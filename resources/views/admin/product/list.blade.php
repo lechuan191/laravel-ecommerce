@@ -48,16 +48,16 @@
                                         <td>{{ $item->product_name }}</td>
                                         <td><img src="{{url('upload/product/',$item->image_one)}}" height="70px;" width="50px;"></td>
                                         <td>{{ $item->category->category_name }}</td>
-                                        <td>{{ $item->brand->brand_name }}</td>
                                         <td>{{ $item->subcategory->subcategory_name }}</td>
+                                        <td>{{ $item->brand->brand_name }}</td>
                                         <td>{{ $item->product_quantity }}</td>
                                         <td>
                                         @if ($item->status ==1)
                                                 <span class="badge badge-success">Active</span>
-                                            @else
+                                        @else
                                                 <span class="badge badge-danger">Inactive</span>
 
-                                            @endif
+                                        @endif
 
 
                                         </td>
@@ -65,9 +65,10 @@
                                            <a class="btn btn-info btn-sm" href="{{route('product.edit',$item->id)}}"><i class="fas fa-pencil-alt"></i> Edit</a>
                                             <a class="btn btn-danger btn-sm" id="deleteRecord" href="{{route('product.destroy',$item->id)}}"><i class="fas fa-trash"></i> Delete</a>
                                             <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                                                <input type="checkbox" class="custom-control-input dataSwitch" data-id="7" id="7"  checked>
-                                                <label class="custom-control-label" for="7"></label>
+                                                <input type="checkbox" class="custom-control-input dataSwitch" data-id="{{$item->id}}" id="{{$item->id}}"  {{ $item->status==1 ? 'checked' : '' }}>
+                                                <label class="custom-control-label" for="{{$item->id}}"></label>
                                             </div>
+
                                         </td>
                                     </tr>
                                 @endforeach
@@ -100,3 +101,28 @@
     </section>
 @endsection
 <!-- DataTables -->
+@section('js')
+<script>
+$(document).ready(function() {
+    $('.dataSwitch').change(function() {
+        let status = $(this).prop('checked') === true ? 1 : 0;
+        let product_id = $(this).data('id');
+
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            // url: '/admin/update-sattus',
+            url: "{{ route('product.change.status') }}",
+            data: { 'status': status, 'id': product_id },
+            success: function(data) {
+               // console.log(data.messege);
+               toastr.success(data.messege);
+            },
+            error: function(data) {
+                console.log('Error:', data);
+            }
+        });
+    });
+});
+</script>
+@endsection

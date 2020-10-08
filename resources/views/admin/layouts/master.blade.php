@@ -22,6 +22,7 @@
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{ asset('backend/dist/css/adminlte.min.css')}}">
     <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="{{ asset('backend/plugins/tags-input/tagsinput.css') }}">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
 </head>
@@ -59,7 +60,7 @@
 <script src="{{ asset('backend/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- bs-custom-file-input -->
 <script src="{{ asset('backend/plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
-@yield('js')
+
 <script src="{{ asset('backend/plugins/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('backend/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('backend/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
@@ -83,6 +84,9 @@
         $('.textarea').summernote();
     })
 </script>
+<script src="{{ asset('backend/plugins/tags-input/tagsinput.js') }}"></script>
+@yield('js')
+
 
 </body>
 </html>
