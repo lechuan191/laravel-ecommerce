@@ -69,38 +69,9 @@ class ProductController extends Controller
         $product->hot_new = $request->hot_new;
         $product->trend = $request->trend;
 
-
         $product->status = $request->status  == true ? 1: 0;
 
-
-
-
-        $image_one = $request->file('image_one');
-        $image_two = $request->file('image_two');
-        $image_three = $request->file('image_three');
-        //if ($image_one && $image_two && $image_three) {
-            $image_one_name = hexdec(uniqid()).'.'.$image_one->getClientOriginalExtension();
-            Image::make($image_one)->resize(300,300)->save('upload/product/'.$image_one_name);
-            $product->image_one = $image_one_name;
-
-             $image_two_name = hexdec(uniqid()).'.'.$image_two->getClientOriginalExtension();
-             Image::make($image_two)->resize(300,300)->save('upload/product/'.$image_two_name);
-             $image_two_url = $image_two_name;
-
-             $image_three_name = hexdec(uniqid()).'.'.$image_three->getClientOriginalExtension();
-             Image::make($image_three)->resize(300,300)->save('upload/product/'.$image_three_name);
-             $image_three_url = $image_three_name;
-
-           // $product->image_one = $image_one_url;
-            $product->image_two = $image_two_url;
-            $product->image_three = $image_three_url;
-        //}
-
-
-
-
-
-        //return response()->json($product);
+       // return response()->json($product);
         $product->save();
         $messege = [
             'messege' => 'Successfully Add Product',
@@ -108,6 +79,7 @@ class ProductController extends Controller
         ];
         return redirect()->route('product.index')->with($messege);
     }
+
     public function edit($id)
     {
         $product = Product::where('id',$id)->first();
@@ -154,13 +126,101 @@ class ProductController extends Controller
 
 
         $product->status = $request->status  == true ? 1: 0;
-        return response()->json($product);
-        $product->save();
+       // return response()->json($product);
+        $update = $product->save();
+        if($update){
         $messege=[
             'messege'=>'Successfully Update Product',
             'alert-type'=>'success'
         ];
         return  redirect()->route('product.index')->with($messege);
 
+        }
+        else{
+            $messege=array(
+                'messege'=>'Nothing TO Update',
+                'alert-type'=>'success'
+                 );
+        return  redirect()->route('product.index')->with($messege);
+
+        }
+    }
+
+    public function updateImage(Request $request, $id)
+    {
+       // $product = Product::find($id);
+        $path = 'upload/product/';
+        $old_image_one = $request->old_image_one;
+        $old_image_two = $request->old_image_two;
+        $old_image_three = $request->old_image_three;
+        $data = array();
+
+        $image_one = $request->file('image_one');
+        $image_two = $request->file('image_two');
+        $image_three = $request->file('image_three');
+        if($image_one){
+            unlink($path.$old_image_one);
+            $image_one_name = hexdec(uniqid()).'.'.$image_one->getClientOriginalExtension();
+            Image::make($image_one)->resize(300,300)->save('upload/product/'.$image_one_name);
+            $image_one_url = $image_one_name;
+            $data['image_one'] = $image_one_url;
+            $product_img = DB::table('products')->where('id',$id)->update($data);
+
+        }
+        if($image_two){
+            $product->image_two = $image_two_url;
+            $image_two_name = hexdec(uniqid()).'.'.$image_two->getClientOriginalExtension();
+            Image::make($image_two)->resize(300,300)->save('upload/product/'.$image_two_name);
+            $image_two_url = $image_two_name;
+            $data['image_two'] = $image_two_url;
+            $product_img = DB::table('products')->where('id',$id)->update($data);
+
+        }
+        if($image_three){
+            $product->image_three = $image_three_url;
+            $image_three_name = hexdec(uniqid()).'.'.$image_three->getClientOriginalExtension();
+            Image::make($image_three)->resize(300,300)->save('upload/product/'.$image_three_name);
+            $image_three_url = $image_three_name;
+            $data['image_three'] = $image_three_url;
+            $product_img = DB::table('products')->where('id',$id)->update($data);
+        }
+        $messege=[
+            'messege'=>'Successfully Update Product',
+            'alert-type'=>'success'
+        ];
+        return  redirect()->route('product.index')->with($messege);
+
+    }
+    public function destroy($id)
+    {
+        $product = Product::find($id);
+        // $path = 'upload/product/';
+        // $logo = $product->image_one;
+        //unlink($path.$logo);
+        $image1 = $product->image_one;
+        $image2 = $product->image_two;
+        $image3 = $product->image_three;
+        unlink($image1);
+        unlink($image2);
+        unlink($image3);
+        $brandDetails->delete();
+        $messege=[
+            'messege'=>'Successfully Delete Product',
+            'alert-type'=>'success'
+        ];
+        return  redirect()->route('product.index')->with($messege);
+
+
+    }
+    public function changeStatus(Request $request)
+    {
+        $product = Product::find($request->id);
+        $product->status = $request->status;
+        $product->save();
+
+        return response()->json([
+            'messege'=>'Successfully Update Status Product',
+            'alert-type'=>'success'
+        ]);
     }
 }

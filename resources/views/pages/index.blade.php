@@ -78,7 +78,7 @@
                        <li><a class="active" data-toggle="tab" href="#li-new-product"><span>New Arrival</span></a></li>
                        <li><a data-toggle="tab" href="#li-bestseller-product"><span>Bestseller</span></a></li>
                        <li><a data-toggle="tab" href="#li-featured-product"><span>Featured Products</span></a></li>
-                    </ul>               
+                    </ul>
                 </div>
                 <!-- Begin Li's Tab Menu Content Area -->
             </div>
@@ -1494,7 +1494,7 @@
                        <li><a class="active" data-toggle="tab" href="#home1"><span>Sanai</span></a></li>
                        <li><a data-toggle="tab" href="#home2"><span>Camera Accessories</span></a></li>
                        <li><a data-toggle="tab" href="#home3"><span>XailStation</span></a></li>
-                    </ul>               
+                    </ul>
                 </div>
                 <!-- Begin Li's Tab Menu Content Area -->
                 <div class="tab-content li-tab-content li-trending-product-content">

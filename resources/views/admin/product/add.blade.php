@@ -20,7 +20,7 @@
             <div class="col-md-12">
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Quick Example</h3>
+                        <h3 class="card-title">Add Product</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
@@ -111,7 +111,8 @@
                                     <!-- text input -->
                                     <div class="form-group">
                                         <label>Product Size</label>
-                                        <input type="text" name="product_size" class="form-control" value="{{ old('product_size') }}">
+                                        {{-- <input type="text" name="product_size" class="form-control" value="{{ old('product_size') }}"> --}}
+                                        <input type="text" name="product_size" class="form-control" data-role="tagsinput" value="{{ old('product_size') }}" >
                                         @error('product_size')
                                             <span class="error invalid-feedback" style="display:block;">
                                                 <strong>{{ $message }}</strong>
@@ -122,7 +123,8 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Product Color</label>
-                                        <input type="text" name="product_color" class="form-control" placeholder="Enter ..." value="{{ old('product_color') }}" >
+                                        {{-- <input type="text" name="product_color" class="form-control" placeholder="Enter ..." value="{{ old('product_color') }}" > --}}
+                                        <input type="text" name="product_color" class="form-control" data-role="tagsinput" value="{{ old('product_color') }}" >
                                         @error('product_color')
                                             <span class="error invalid-feedback" style="display:block;">
                                                 <strong>{{ $message }}</strong>
@@ -254,14 +256,14 @@
 
                         <div class="card-footer">
                             <a href="{{ route('product.index') }}" class="btn btn-secondary">Hủy</a>
-                            <button type="submit" class="btn btn-success float-right">Thêm mới</button>
+                            <button type="submit" class="btn btn-success">Thêm mới</button>
                         </div>
                     </form>
                 </div>
             </div>
 
         </div>
-        </form>
+
     </section>
 @endsection
 @section('js')
