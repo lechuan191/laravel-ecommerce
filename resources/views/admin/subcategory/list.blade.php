@@ -39,7 +39,6 @@
                 </thead>
                 <tbody>
                   @foreach ($sub_cate as $item)
-
                 <tr>
                   <td>{{ $item->id }}</td>
                     <td>{{ $item->subcategory_name }}</td>

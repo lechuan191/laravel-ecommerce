@@ -35,8 +35,10 @@
                                     <th>Images</th>
                                     <th>Category</th>
                                     <th>SubCategory</th>
-                                    <th>Brand</th>
-                                    <th>Quantity</th>
+                                    {{-- <th>Brand</th>
+                                    <th>Quantity</th> --}}
+                                    <th>Selling Price</th>
+                                    <th>Discount Price</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -49,8 +51,10 @@
                                         <td><img src="{{url('upload/product/',$item->image_one)}}" height="70px;" width="50px;"></td>
                                         <td>{{ $item->category->category_name }}</td>
                                         <td>{{ $item->subcategory->subcategory_name }}</td>
-                                        <td>{{ $item->brand->brand_name }}</td>
-                                        <td>{{ $item->product_quantity }}</td>
+                                        {{-- <td>{{ $item->brand->brand_name }}</td>
+                                        <td>{{ $item->product_quantity }}</td> --}}
+                                        <td>{{ $item->selling_price }}</td>
+                                        <td>{{ $item->discount_price }}</td>
                                         <td>
                                         @if ($item->status ==1)
                                                 <span class="badge badge-success">Active</span>
@@ -79,8 +83,10 @@
                                     <th>Images</th>
                                     <th>Category</th>
                                     <th>SubCategory</th>
-                                    <th>Brand</th>
-                                    <th>Quantity</th>
+                                    {{-- <th>Brand</th>
+                                    <th>Quantity</th> --}}
+                                    <th>Selling Price</th>
+                                    <th>Discount Price</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
