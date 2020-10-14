@@ -126,7 +126,7 @@
                 </ul>
             </li>
 
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="fas fa-list-ul"></i>
               <p>
@@ -135,14 +135,24 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+                    {{-- @if(Session::get('page')=='lisst-product')
+                        @php
+                            $active = 'active';
+                        @endphp
+                    @else
+                        @php
+                            $active = '';
+                        @endphp
+                    @endif --}}
               <li class="nav-item">
-                <a href="{{route('product.index')}}" class="nav-link">
+                {{-- <a href="{{route('product.index')}}" class="nav-link {{$active}}"> --}}
+                <a href="{{route('product.index')}}" class="nav-link @if(Session::get('page')=='list-product') active  @endif">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Product List</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('product.create')}}" class="nav-link">
+                    <a href="{{route('product.create')}}" class="nav-link @if(Session::get('page')=='add-product') active  @endif">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Product Add</p>
                 </a>

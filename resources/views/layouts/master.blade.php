@@ -1,7 +1,7 @@
 
 <!doctype html>
 <html class="no-js" lang="zxx">
-    
+
 <!-- index28:48-->
 <head>
         <meta charset="utf-8">
@@ -41,8 +41,11 @@
         <link rel="stylesheet" href="{{ asset('frontend/style.css')}}">
         <!-- Responsive CSS -->
         <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css')}}">
+        <!-- Toastr -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
         <!-- Modernizr js -->
         <script src="{{ asset('frontend/js/vendor/modernizr-2.8.3.min.js')}}"></script>
+        @yield('css')
     </head>
     <body>
     <!--[if lt IE 8]>
@@ -112,6 +115,29 @@
         <script src="{{ asset('frontend/js/scrollUp.min.js')}}"></script>
         <!-- Main/Activator js -->
         <script src="{{ asset('frontend/js/main.js')}}"></script>
+        @yield('js')
+        <!-- Toastr -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script>
+            @if(Session::has('message'))
+              var type="{{Session::get('alert-type','info')}}"
+              switch(type){
+                  case 'info':
+                       toastr.info("{{ Session::get('message') }}");
+                       break;
+                  case 'success':
+                      toastr.success("{{ Session::get('message') }}");
+                      break;
+                  case 'warning':
+                     toastr.warning("{{ Session::get('message') }}");
+                      break;
+                  case 'error':
+                      toastr.error("{{ Session::get('message') }}");
+                      break;
+              }
+            @endif
+         </script>
     </body>
 
 <!-- index30:23-->

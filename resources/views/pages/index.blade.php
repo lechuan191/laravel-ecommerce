@@ -296,7 +296,7 @@
 </div>
 <!-- Product Area End Here -->
 <!-- Begin Li's Static Banner Area -->
-<div class="li-static-banner">
+{{-- <div class="li-static-banner">
     <div class="container">
         <div class="row">
             <!-- Begin Single Banner Area -->
@@ -328,7 +328,7 @@
             <!-- Single Banner Area End Here -->
         </div>
     </div>
-</div>
+</div> --}}
 <!-- Li's Static Banner Area End Here -->
 <!-- Begin Li's Laptop Product Area -->
 <section class="product-area li-laptop-product pt-60 pb-45">
@@ -506,7 +506,7 @@
 </section>
 <!-- Li's TV & Audio Product Area End Here -->
 <!-- Begin Li's Static Home Area -->
-<div class="li-static-home">
+{{-- <div class="li-static-home">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -530,5 +530,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 @endsection

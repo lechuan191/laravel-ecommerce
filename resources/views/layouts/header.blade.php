@@ -18,18 +18,36 @@
                         <ul class="ht-menu">
                             <!-- Begin Setting Area -->
                             <li>
-                                <div class="ht-setting-trigger"><span>Setting</span></div>
+                                {{-- <div class="ht-setting-trigger"><span>Setting</span></div>
                                 <div class="setting ht-setting">
                                     <ul class="ht-setting-list">
                                         <li><a href="login-register.html">My Account</a></li>
                                         <li><a href="checkout.html">Checkout</a></li>
                                         <li><a href="login-register.html">Sign In</a></li>
                                     </ul>
+                                </div> --}}
+                                @guest
+                                <span></span><a href="{{route('login')}}" class="btn btn-primary">Sign In</a></span>
+                                @else
+                            <div class="ht-setting-trigger"><span> Xin chào: {{Auth::user()->name }}</span></div>
+                                <div class="setting ht-setting">
+                                    <ul class="ht-setting-list">
+                                        <li><a href="login-register.html">Wishlist</a></li>
+                                        <li><a href="login-register.html">Cart</a></li>
+                                        <li><a href="checkout.html">Checkout</a></li>
+                                    <li><a href="{{route('user.logout')}}">Logout</a></li>
+                                    </ul>
                                 </div>
+                                @endguest
+                            </li>
+                            <li>
+                                @guest
+                                <a href="{{route('register')}}" class="btn btn-primary">Register</a>
+                                @endguest
                             </li>
                             <!-- Setting Area End Here -->
                             <!-- Begin Currency Area -->
-                            <li>
+                            {{-- <li>
                                 <span class="currency-selector-wrapper">Currency :</span>
                                 <div class="ht-currency-trigger"><span>USD $</span></div>
                                 <div class="currency ht-currency">
@@ -38,10 +56,10 @@
                                         <li class="active"><a href="#">USD $</a></li>
                                     </ul>
                                 </div>
-                            </li>
+                            </li> --}}
                             <!-- Currency Area End Here -->
                             <!-- Begin Language Area -->
-                            <li>
+                            {{-- <li>
                                 <span class="language-selector-wrapper">Language :</span>
                                 <div class="ht-language-trigger"><span>English</span></div>
                                 <div class="language ht-language">
@@ -50,7 +68,7 @@
                                         <li><a href="#"><img src="{{ asset('frontend/images/menu/flag-icon/2.jpg')}}" alt="">Français</a></li>
                                     </ul>
                                 </div>
-                            </li>
+                            </li> --}}
                             <!-- Language Area End Here -->
                         </ul>
                     </div>
@@ -157,12 +175,15 @@
                     <div class="header-middle-right">
                         <ul class="hm-menu">
                             <!-- Begin Header Middle Wishlist Area -->
+                            @guest
+                            @else
                             <li class="hm-wishlist">
                                 <a href="wishlist.html">
                                     <span class="cart-item-count wishlist-item-count">0</span>
                                     <i class="fa fa-heart-o"></i>
                                 </a>
                             </li>
+                            @endguest
                             <!-- Header Middle Wishlist Area End Here -->
                             <!-- Begin Header Mini Cart Area -->
                             <li class="hm-minicart">
@@ -230,15 +251,15 @@
                     <div class="hb-menu">
                         <nav>
                             <ul>
-                                <li class="dropdown-holder"><a href="index.html">Home</a>
-                                    <ul class="hb-dropdown">
+                                <li class="dropdown-holder"><a href="{{route('index')}}">Home</a>
+                                    {{-- <ul class="hb-dropdown">
                                         <li class="active"><a href="index.html">Home One</a></li>
                                         <li><a href="index-2.html">Home Two</a></li>
                                         <li><a href="index-3.html">Home Three</a></li>
                                         <li><a href="index-4.html">Home Four</a></li>
-                                    </ul>
+                                    </ul> --}}
                                 </li>
-                                <li class="megamenu-holder"><a href="shop-left-sidebar.html">Shop</a>
+                                {{-- <li class="megamenu-holder"><a href="shop-left-sidebar.html">Shop</a>
                                     <ul class="megamenu hb-megamenu">
                                         <li><a href="shop-left-sidebar.html">Shop Page Layout</a>
                                             <ul>
@@ -271,7 +292,7 @@
                                             </ul>
                                         </li>
                                     </ul>
-                                </li>
+                                </li> --}}
                                 <li class="dropdown-holder"><a href="blog-left-sidebar.html">Category</a>
                                     @php
                                         $category = DB::table('categories')->get();
@@ -291,7 +312,7 @@
                                         @endforeach
                                     </ul>
                                 </li>
-                                <li class="megamenu-static-holder"><a href="index.html">Pages</a>
+                                {{-- <li class="megamenu-static-holder"><a href="index.html">Pages</a>
                                     <ul class="megamenu hb-megamenu">
                                         <li><a href="blog-left-sidebar.html">Blog Layouts</a>
                                             <ul>
@@ -331,11 +352,11 @@
                                             </ul>
                                         </li>
                                     </ul>
-                                </li>
+                                </li> --}}
                                 <li><a href="about-us.html">About Us</a></li>
                                 <li><a href="contact.html">Contact</a></li>
-                                <li><a href="shop-left-sidebar.html">Smartwatch</a></li>
-                                <li><a href="shop-left-sidebar.html">Accessories</a></li>
+                                {{--<li><a href="shop-left-sidebar.html">Smartwatch</a></li>
+                                <li><a href="shop-left-sidebar.html">Accessories</a></li> --}}
                             </ul>
                         </nav>
                     </div>

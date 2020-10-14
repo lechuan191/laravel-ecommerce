@@ -7,6 +7,7 @@ use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Image;
+use Session;
 
 class ProductController extends Controller
 {
@@ -16,12 +17,14 @@ class ProductController extends Controller
     }
     public function index()
     {
+        Session::put('page', 'list-product');
         $product = Product::all();
         //return response()->json($product);
         return view('admin.product.list', compact('product'));
     }
     public function create()
     {
+        Session::put('page', 'add-product');
         $category = DB::table('categories')->get();
         $brand = DB::table('brands')->get();
         return view('admin.product.add', compact(['category', 'brand']));
