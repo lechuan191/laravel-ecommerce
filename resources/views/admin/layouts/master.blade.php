@@ -23,6 +23,8 @@
   <link rel="stylesheet" href="{{ asset('backend/dist/css/adminlte.min.css')}}">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="{{ asset('backend/plugins/tags-input/tagsinput.css') }}">
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
 </head>
@@ -86,6 +88,7 @@
 </script>
 <script src="{{ asset('backend/plugins/tags-input/tagsinput.js') }}"></script>
 @yield('js')
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 
 
 </body>

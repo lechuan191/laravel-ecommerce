@@ -56,23 +56,18 @@
                                         <td>{{ $item->selling_price }}</td>
                                         <td>{{ $item->discount_price }}</td>
                                         <td>
-                                        @if ($item->status ==1)
+                                        {{-- @if ($item->status ==1)
                                                 <span class="badge badge-success">Active</span>
                                         @else
                                                 <span class="badge badge-danger">Inactive</span>
 
-                                        @endif
-
+                                        @endif --}}
+                                        <input type="checkbox" class="toggle-event" data-toggle="toggle" data-on="Active" data-off="UnActive" data-onstyle="success" data-offstyle="danger" data-size="sm" data-id="{{$item->id}}" id="{{$item->id}}" {{ $item->status==1 ? 'checked' : '' }}>
 
                                         </td>
                                         <td class="text-center">
                                            <a class="btn btn-info btn-sm" href="{{route('product.edit',$item->id)}}"><i class="fas fa-pencil-alt"></i> Edit</a>
                                             <a class="btn btn-danger btn-sm" id="deleteRecord" href="{{route('product.destroy',$item->id)}}"><i class="fas fa-trash"></i> Delete</a>
-                                            <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                                                <input type="checkbox" class="custom-control-input dataSwitch" data-id="{{$item->id}}" id="{{$item->id}}"  {{ $item->status==1 ? 'checked' : '' }}>
-                                                <label class="custom-control-label" for="{{$item->id}}"></label>
-                                            </div>
-
                                         </td>
                                     </tr>
                                 @endforeach
@@ -110,10 +105,11 @@
 @section('js')
 <script>
 $(document).ready(function() {
-    $('.dataSwitch').change(function() {
+    //$('.dataSwitch').change(function() {
+    $('.toggle-event').change(function() {
         let status = $(this).prop('checked') === true ? 1 : 0;
         let product_id = $(this).data('id');
-
+        console.log(product_id);
         $.ajax({
             type: "GET",
             dataType: "json",
@@ -121,11 +117,16 @@ $(document).ready(function() {
             url: "{{ route('product.change.status') }}",
             data: { 'status': status, 'id': product_id },
             success: function(data) {
-               // console.log(data.messege);
-               toastr.success(data.messege);
+               //console.log(data.messege + status);
+               if(status == 1){
+                    toastr.success(data.messege);
+                }else{
+                    toastr.warning(data.messege);
+                }
             },
             error: function(data) {
-                console.log('Error:', data);
+                //console.log('Error:', data);
+                toastr.error('Error');
             }
         });
     });

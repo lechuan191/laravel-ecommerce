@@ -237,10 +237,16 @@ class ProductController extends Controller
         $product = Product::find($request->id);
         $product->status = $request->status;
         $product->save();
-
-        return response()->json([
-            'messege'=>'Successfully Update Status Product',
-            'alert-type'=>'success'
-        ]);
+        if($product->status == 1){
+            return response()->json([
+                'messege'=>'Status Product Active',
+                'alert-type'=>'success'
+            ]);
+        }else{
+            return response()->json([
+                'messege'=>'Status Product UnActive',
+                'alert-type'=>'danger'
+            ]);
+        }
     }
 }
