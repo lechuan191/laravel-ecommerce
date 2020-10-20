@@ -10,7 +10,7 @@
             </ul>
         </div>
     </div>
-</div>    
+</div>
 @endsection
 @section('content')
 <!-- content-wraper start -->
@@ -22,43 +22,30 @@
                 <div class="product-details-left">
                     <div class="product-details-images slider-navigation-1">
                         <div class="lg-image">
-                            <a class="popup-img venobox vbox-item" href="{{ asset('frontend/images/product/large-size/1.jpg')}}" data-gall="myGallery">
-                                <img src="{{ asset('frontend/images/product/large-size/1.jpg')}}" alt="product image">
+                            <a class="popup-img venobox vbox-item" href="{{ asset('/upload/product/'.$product->image_one)}}" data-gall="myGallery">
+                                <img src="{{ asset('/upload/product/'.$product->image_one)}}" alt="product image">
                             </a>
                         </div>
                         <div class="lg-image">
-                            <a class="popup-img venobox vbox-item" href="{{ asset('frontend/images/product/large-size/2.jpg')}}" data-gall="myGallery">
-                                <img src="{{ asset('frontend/images/product/large-size/2.jpg')}}" alt="product image">
+                            <a class="popup-img venobox vbox-item" href="{{ asset('/upload/product/'.$product->image_two)}}" data-gall="myGallery">
+                                <img src="{{ asset('/upload/product/'.$product->image_two)}}" alt="product image">
                             </a>
                         </div>
                         <div class="lg-image">
-                            <a class="popup-img venobox vbox-item" href="{{ asset('frontend/images/product/large-size/3.jpg')}}" data-gall="myGallery">
-                                <img src="{{ asset('frontend/images/product/large-size/3.jpg')}}" alt="product image">
+                            <a class="popup-img venobox vbox-item" href="{{ asset('/upload/product/'.$product->image_three)}}" data-gall="myGallery">
+                                <img src="{{ asset('/upload/product/'.$product->image_three)}}" alt="product image">
                             </a>
                         </div>
-                        <div class="lg-image">
-                            <a class="popup-img venobox vbox-item" href="{{ asset('frontend/images/product/large-size/4.jpg')}}" data-gall="myGallery">
-                                <img src="{{ asset('frontend/images/product/large-size/4.jpg')}}" alt="product image">
-                            </a>
-                        </div>
-                        <div class="lg-image">
-                            <a class="popup-img venobox vbox-item" href="{{ asset('frontend/images/product/large-size/5.jpg')}}" data-gall="myGallery">
-                                <img src="{{ asset('frontend/images/product/large-size/5.jpg')}}" alt="product image">
-                            </a>
-                        </div>
-                        <div class="lg-image">
-                            <a class="popup-img venobox vbox-item" href="{{ asset('frontend/images/product/large-size/6.jpg')}}" data-gall="myGallery">
-                                <img src="{{ asset('frontend/images/product/large-size/6.jpg')}}" alt="product image">
-                            </a>
-                        </div>
+
+
                     </div>
-                    <div class="product-details-thumbs slider-thumbs-1">                                        
-                        <div class="sm-image"><img src="{{ asset('frontend/images/product/small-size/1.jpg')}}" alt="product image thumb"></div>
-                        <div class="sm-image"><img src="{{ asset('frontend/images/product/small-size/2.jpg')}}" alt="product image thumb"></div>
-                        <div class="sm-image"><img src="{{ asset('frontend/images/product/small-size/3.jpg')}}" alt="product image thumb"></div>
-                        <div class="sm-image"><img src="{{ asset('frontend/images/product/small-size/4.jpg')}}" alt="product image thumb"></div>
-                        <div class="sm-image"><img src="{{ asset('frontend/images/product/small-size/5.jpg')}}" alt="product image thumb"></div>
-                        <div class="sm-image"><img src="{{ asset('frontend/images/product/small-size/6.jpg')}}" alt="product image thumb"></div>
+                    <div class="product-details-thumbs slider-thumbs-1">
+                        <div class="sm-image"><img src="{{ asset('/upload/product/'.$product->image_one)}}" alt="product image thumb"></div>
+                        <div class="sm-image"><img src="{{ asset('/upload/product/'.$product->image_two)}}" alt="product image thumb"></div>
+                        <div class="sm-image"><img src="{{ asset('/upload/product/'.$product->image_three)}}" alt="product image thumb"></div>
+
+
+
                     </div>
                 </div>
                 <!--// Product Details Left -->
@@ -67,7 +54,7 @@
             <div class="col-lg-7 col-md-6">
                 <div class="product-details-view-content pt-60">
                     <div class="product-info">
-                        <h2>Today is a good day Framed poster</h2>
+                        <h2>{{$product->product_name}}</h2>
                         <span class="product-details-ref">Reference: demo_15</span>
                         <div class="rating-box pt-20">
                             <ul class="rating rating-with-review-item">
@@ -81,21 +68,39 @@
                             </ul>
                         </div>
                         <div class="price-box pt-20">
-                            <span class="new-price new-price-2">$57.98</span>
+                            @if ($product->discount_price ==null)
+                                <label for="">Price:</label>
+                                <span class="new-price new-price-2">{{number_format($product->selling_price)}} VND</span>
+                            @else
+                                <label for="">Price:</label>
+                                <span class="new-price new-price-2">{{ number_format($product->discount_price) }} VND</span>
+                                <span class="old-price" style="text-decoration: line-through;">{{number_format($product->selling_price) }} VND</span>
+                            @endif
                         </div>
                         <div class="product-desc">
-                            <p>
-                                <span>100% cotton double printed dress. Black and white striped top and orange high waisted skater skirt bottom. Lorem ipsum dolor sit amet, consectetur adipisicing elit. quibusdam corporis, earum facilis et nostrum dolorum accusamus similique eveniet quia pariatur.
-                                </span>
-                            </p>
+                            {!! ($product->product_details) !!}
                         </div>
-                        <div class="product-variants">
+                        <div class="product-variants" style="display:flex;">
                             <div class="produt-variants-size">
-                                <label>Dimension</label>
-                                <select class="nice-select">
-                                    <option value="1" title="S" selected="selected">40x60cm</option>
+                                <label>Size:</label>
+                                <select class="nice-select" name="size">
+                                    @foreach($product_size as $size)
+                                        <option value="{{ $size }}">{{ $size }}</option>
+                                    @endforeach
+                                    {{-- <option value="1" title="S" selected="selected">40x60cm</option>
                                     <option value="2" title="M">60x90cm</option>
-                                    <option value="3" title="L">80x120cm</option>
+                                    <option value="3" title="L">80x120cm</option> --}}
+                                </select>
+                            </div>
+                            <div class="produt-variants-size">
+                                <label>Color:</label>
+                                <select class="nice-select" name="color">
+                                    @foreach($product_color as $color)
+                                        <option value="{{ $color }}">{{ $color }}</option>
+                                    @endforeach
+                                    {{-- <option value="1" title="S" selected="selected">40x60cm</option>
+                                    <option value="2" title="M">60x90cm</option>
+                                    <option value="3" title="L">80x120cm</option> --}}
                                 </select>
                             </div>
                         </div>
@@ -104,7 +109,7 @@
                                 <div class="quantity">
                                     <label>Quantity</label>
                                     <div class="cart-plus-minus">
-                                        <input class="cart-plus-minus-box" value="1" type="text">
+                                        <input class="cart-plus-minus-box" value="1" type="number" name="quantity">
                                         <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
                                         <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                                     </div>
@@ -153,7 +158,7 @@
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
     </div>
 </div>
@@ -168,7 +173,7 @@
                        <li><a class="active" data-toggle="tab" href="#description"><span>Description</span></a></li>
                        <li><a data-toggle="tab" href="#product-details"><span>Product Details</span></a></li>
                        <li><a data-toggle="tab" href="#reviews"><span>Reviews</span></a></li>
-                    </ul>               
+                    </ul>
                 </div>
                 <!-- Begin Li's Tab Menu Content Area -->
             </div>
@@ -176,7 +181,7 @@
         <div class="tab-content">
             <div id="description" class="tab-pane active show" role="tabpanel">
                 <div class="product-description">
-                    <span>The best is yet to come! Give your walls a voice with a framed poster. This aesthethic, optimistic poster will look great in your desk or in an open-space office. Painted wooden frame with passe-partout for more depth.</span>
+                    {!! ($product->product_details) !!}
                 </div>
             </div>
             <div id="product-details" class="tab-pane" role="tabpanel">
@@ -212,7 +217,7 @@
                         <div class="review-btn">
                             <a class="review-links" href="#" data-toggle="modal" data-target="#mymodal">Write Your Review!</a>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>

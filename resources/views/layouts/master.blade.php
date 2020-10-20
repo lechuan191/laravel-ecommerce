@@ -69,12 +69,14 @@
             @include('layouts.footer')
             <!-- Footer Area End Here -->
             <!-- Begin Quick View | Modal Area -->
-            @include('layouts.modal')
+            {{-- @include('layouts.modal') --}}
             <!-- Quick View | Modal Area End Here -->
         </div>
         <!-- Body Wrapper End Here -->
         <!-- jQuery-V1.12.4 -->
+
         <script src="{{ asset('frontend/js/vendor/jquery-1.12.4.min.js')}}"></script>
+        {{-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> --}}
         <!-- Popper js -->
         <script src="{{ asset('frontend/js/vendor/popper.min.js')}}"></script>
         <!-- Bootstrap V4.1.3 Fremwork js -->
@@ -115,10 +117,11 @@
         <script src="{{ asset('frontend/js/scrollUp.min.js')}}"></script>
         <!-- Main/Activator js -->
         <script src="{{ asset('frontend/js/main.js')}}"></script>
-        @yield('js')
+
         <!-- Toastr -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        @yield('js')
         <script>
             @if(Session::has('message'))
               var type="{{Session::get('alert-type','info')}}"

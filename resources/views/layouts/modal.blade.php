@@ -29,7 +29,7 @@
                                     <img src="{{ asset('frontend/images/product/large-size/6.jpg')}}" alt="product image">
                                 </div>
                             </div>
-                            <div class="product-details-thumbs slider-thumbs-1">                                        
+                            <div class="product-details-thumbs slider-thumbs-1">
                                 <div class="sm-image"><img src="{{ asset('frontend/images/product/small-size/1.jpg')}}" alt="product image thumb"></div>
                                 <div class="sm-image"><img src="{{ asset('frontend/images/product/small-size/2.jpg')}}" alt="product image thumb"></div>
                                 <div class="sm-image"><img src="{{ asset('frontend/images/product/small-size/3.jpg')}}" alt="product image thumb"></div>
