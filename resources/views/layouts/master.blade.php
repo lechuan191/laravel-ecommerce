@@ -15,6 +15,8 @@
         <link rel="stylesheet" href="{{ asset('frontend/css/material-design-iconic-font.min.css')}}">
         <!-- Font Awesome -->
         <link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.min.css')}}">
+        {{-- <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/> --}}
+
         <!-- Font Awesome Stars-->
         <link rel="stylesheet" href="{{ asset('frontend/css/fontawesome-stars.css')}}">
         <!-- Meanmenu CSS -->

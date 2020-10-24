@@ -189,13 +189,13 @@
                             <li class="hm-minicart">
                                 <div class="hm-minicart-trigger">
                                     <span class="item-icon"></span>
-                                    <span class="item-text">£80.00
-                                        <span class="cart-item-count">2</span>
+                                    <span class="item-text">{{Cart::subtotal()}}
+                                        <span class="cart-item-count">{{Cart::count()}}</span>
                                     </span>
                                 </div>
                                 <span></span>
                                 <div class="minicart">
-                                    <ul class="minicart-product-list">
+                                    {{-- <ul class="minicart-product-list">
                                         <li>
                                             <a href="single-product.html" class="minicart-product-image">
                                                 <img src="{{ asset('frontend/images/product/small-size/5.jpg')}}" alt="cart products">
@@ -220,10 +220,10 @@
                                                 <i class="fa fa-close"></i>
                                             </button>
                                         </li>
-                                    </ul>
-                                    <p class="minicart-total">SUBTOTAL: <span>£80.00</span></p>
+                                    </ul> --}}
+                                <p class="minicart-total">SUBTOTAL: <span>{{Cart::subtotal().' VND'}}</span></p>
                                     <div class="minicart-button">
-                                        <a href="shopping-cart.html" class="li-button li-button-fullwidth li-button-dark">
+                                        <a href="{{route('show.cart')}}" class="li-button li-button-fullwidth li-button-dark">
                                             <span>View Full Cart</span>
                                         </a>
                                         <a href="checkout.html" class="li-button li-button-fullwidth">

@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('slide')
+{{-- @section('slide')
 <div class="slider-with-banner">
     <div class="container">
         <div class="row">
@@ -67,7 +67,7 @@
         </div>
     </div>
 </div>
-@endsection
+@endsection --}}
 @section('content')
 <div class="product-area pt-60 pb-50">
     <div class="container">
@@ -142,13 +142,9 @@
                                     </div>
                                     <div class="add-actions">
                                         <ul class="add-actions-link">
-                                            {{-- <li class="add-cart active"><a href="{{route('product.details',$item->id)}}">Add to cart</a></li> --}}
-                                            {{-- <li class="add-cart active"><a href="#" data-target="#exampleModalCenter" data-toggle="modal" id="addcart">Add to cart</a></li> --}}
-                                                {{-- <button id="{{ $item->id }}" class="add-cart addcart" data-toggle="modal" data-target="#exampleModalCenter" onclick="productview(this.id)">Add to Cart</button> --}}
-                                                <button data-id="{{ $item->id }}" class="add-cart addcart">Add to Cart</button>
+                                            <li class="add-cart active"><a href="{{route('product.details',$item->id)}}">Add to cart</a></li>
                                             <li><a class="links-details" href="wishlist.html"><i class="fa fa-heart-o"></i></a></li>
-                                            <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
-
+                                            <li><a href="javascript:void(0)" title="quick view" class="quick-view-btn addcart" data-target="#myModal" data-id="{{ $item->id }}"><i class="fa fa-eye"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -199,7 +195,7 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <h4><a class="product_name" href="single-product.html">{{$item->product_name}}</a></h4>
+                                        <h4><a class="product_name" href="{{route('product.details',$item->id)}}">{{$item->product_name}}</a></h4>
                                         <div class="price-box">
                                             @if ($item->discount_price ==null)
                                                 <span class="new-price">{{number_format($item->selling_price)}} VND</span>
@@ -214,7 +210,7 @@
                                         <ul class="add-actions-link">
                                             <li class="add-cart active"><a href="{{route('product.details',$item->id)}}">Add to cart</a></li>
                                             <li><a class="links-details" href="wishlist.html"><i class="fa fa-heart-o"></i></a></li>
-                                            <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="javascript:void(0)" title="quick view" class="quick-view-btn addcart" data-target="#myModal" data-id="{{ $item->id }}"><i class="fa fa-eye"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -265,7 +261,7 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <h4><a class="product_name" href="single-product.html">{{$item->product_name}}</a></h4>
+                                        <h4><a class="product_name" href="{{route('product.details',$item->id)}}">{{$item->product_name}}</a></h4>
                                         <div class="price-box">
                                             @if ($item->discount_price ==null)
                                                 <span class="new-price">{{number_format($item->selling_price)}} VND</span>
@@ -284,7 +280,7 @@
                                         <ul class="add-actions-link">
                                             <li class="add-cart active"><a href="{{route('product.details',$item->id)}}">Add to cart</a></li>
                                             <li><a class="links-details" href="wishlist.html"><i class="fa fa-heart-o"></i></a></li>
-                                            <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="javascript:void(0)" title="quick view" class="quick-view-btn addcart" data-target="#myModal" data-id="{{ $item->id }}"><i class="fa fa-eye"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -390,7 +386,7 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <h4><a class="product_name" href="single-product.html">{{$item->product_name}}</a></h4>
+                                        <h4><a class="product_name" href="{{route('product.details',$men->id)}}">{{$men->product_name}}</a></h4>
                                         <div class="price-box">
                                             @if ($men->discount_price ==null)
                                                 <span class="new-price">{{number_format($men->selling_price)}} VND</span>
@@ -403,9 +399,9 @@
                                     </div>
                                     <div class="add-actions">
                                         <ul class="add-actions-link">
-                                            <li class="add-cart active"><a href="{{route('product.details',$item->id)}}">Add to cart</a></li>
+                                            <li class="add-cart active"><a href="{{route('product.details',$men->id)}}">Add to cart</a></li>
                                             <li><a class="links-details" href="wishlist.html"><i class="fa fa-heart-o"></i></a></li>
-                                            <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="javascript:void(0)" title="quick view" class="quick-view-btn addcart" data-target="#myModal" data-id="{{ $men->id }}"><i class="fa fa-eye"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -477,7 +473,7 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <h4><a class="product_name" href="single-product.html">{{$item->product_name}}</a></h4>
+                                        <h4><a class="product_name" href="{{route('product.details',$item->id)}}">{{$item->product_name}}</a></h4>
                                         <div class="price-box">
                                             @if ($item->discount_price ==null)
                                                 <span class="new-price">{{number_format($item->selling_price)}} VND</span>
@@ -492,7 +488,7 @@
                                         <ul class="add-actions-link">
                                             <li class="add-cart active"><a href="{{route('product.details',$item->id)}}">Add to cart</a></li>
                                             <li><a class="links-details" href="wishlist.html"><i class="fa fa-heart-o"></i></a></li>
-                                            <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="javascript:void(0)" title="quick view" class="quick-view-btn addcart" data-target="#myModal" data-id="{{ $item->id }}"><i class="fa fa-eye"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -535,7 +531,7 @@
         </div>
     </div>
 </div> --}}
-<div class="modal fade modal-wrapper" id="exampleModalCenter" >
+<div class="modal fade modal-wrapper" id="myModal" >
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body">
@@ -548,19 +544,19 @@
                         <div class="product-details-left">
                             <div class="product-details-images slider-navigation-1">
                                 <div class="lg-image">
-                                    <img src="{{ asset('frontend/images/product/large-size/1.jpg')}}" alt="product image">
+                                    <img src="{{ asset('frontend/images/product/large-size/1.jpg')}}" alt="product image" class="product_image1">
                                 </div>
                                 <div class="lg-image">
-                                    <img src="{{ asset('frontend/images/product/large-size/2.jpg')}}" alt="product image">
+                                    <img src="{{ asset('frontend/images/product/large-size/2.jpg')}}" alt="product image" class="product_image2">
                                 </div>
                                 <div class="lg-image">
-                                    <img src="{{ asset('frontend/images/product/large-size/3.jpg')}}" alt="product image">
+                                    <img src="{{ asset('frontend/images/product/large-size/3.jpg')}}" alt="product image" class="product_image3">
                                 </div>
                             </div>
                             <div class="product-details-thumbs slider-thumbs-1">
-                                <div class="sm-image"><img src="{{ asset('frontend/images/product/small-size/1.jpg')}}" alt="product image thumb"></div>
-                                <div class="sm-image"><img src="{{ asset('frontend/images/product/small-size/2.jpg')}}" alt="product image thumb"></div>
-                                <div class="sm-image"><img src="{{ asset('frontend/images/product/small-size/3.jpg')}}" alt="product image thumb"></div>
+                                <div class="sm-image"><img src="{{ asset('frontend/images/product/small-size/1.jpg')}}" alt="product image thumb" class="product_image1"></div>
+                                <div class="sm-image"><img src="{{ asset('frontend/images/product/small-size/2.jpg')}}" alt="product image thumb" class="product_image2"></div>
+                                <div class="sm-image"><img src="{{ asset('frontend/images/product/small-size/3.jpg')}}" alt="product image thumb" class="product_image3"></div>
 
                             </div>
                         </div>
@@ -570,8 +566,11 @@
                     <div class="col-lg-7 col-md-6 col-sm-6">
                         <div class="product-details-view-content pt-60">
                             <div class="product-info">
-                                <h2>Today is a good day Framed poster</h2>
-                                <span class="product-details-ref">Reference: demo_15</span>
+                                <span>Product Name: </span>
+                                <h2 id="product_name">Today is a good day Framed poster</h2>
+
+                                <span> Product code: </span>
+                                <span class="product-details-ref" id="product_code">Reference: demo_15</span>
                                 <div class="rating-box pt-20">
                                     <ul class="rating rating-with-review-item">
                                         <li><i class="fa fa-star-o"></i></li>
@@ -584,37 +583,59 @@
                                     </ul>
                                 </div>
                                 <div class="price-box pt-20">
-                                    <span class="new-price new-price-2">$57.98</span>
+                                    <span>Product Price:</span>
+                                    <span class="new-price new-price-2" id="selling_price">$57.98</span>
+                                    <span class="old-price" id="discount_price" style="text-decoration: line-through;"> style="text-decoration: line-through;">2200 VND</span>
                                 </div>
                                 <div class="product-desc">
                                     <p>
-                                        <span>100% cotton double printed dress. Black and white striped top and orange high waisted skater skirt bottom. Lorem ipsum dolor sit amet, consectetur adipisicing elit. quibusdam corporis, earum facilis et nostrum dolorum accusamus similique eveniet quia pariatur.
-                                        </span>
+                                        {{-- <span>100% cotton double printed dress. Black and white striped top and orange high waisted skater skirt bottom. Lorem ipsum dolor sit amet, consectetur adipisicing elit. quibusdam corporis, earum facilis et nostrum dolorum accusamus similique eveniet quia pariatur.
+                                        </span> --}}
+                                        <p>Details: </p>
                                     </p>
+                                    {{-- <div class="product_details"></div> --}}
+                                    <div id="geek"></div>
                                 </div>
-                                <div class="product-variants">
-                                    <div class="produt-variants-size">
-                                        <label>Dimension</label>
-                                        <select class="nice-select">
-                                            <option value="1" title="S" selected="selected">40x60cm</option>
-                                            <option value="2" title="M">60x90cm</option>
-                                            <option value="3" title="L">80x120cm</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="single-add-to-cart">
-                                    <form action="#" class="cart-quantity">
-                                        <div class="quantity">
-                                            <label>Quantity</label>
-                                            <div class="cart-plus-minus">
-                                                <input class="cart-plus-minus-box" value="1" type="text">
-                                                <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
-                                                <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
-                                            </div>
+                                <form action="{{route('add.cart')}}" method="post"class="cart-quantity">
+                                    @csrf
+                                    <input type="hidden" name="product_id" id="product_id">
+                                    {{-- <h1 id=product_id>id</h1> --}}
+                                    <div class="product-variants" style="display:flex;">
+                                        <div class="produt-variants-size">
+                                            <label>Size</label>
+                                            {{-- <select class="nice-select" name="size">
+                                                <option value="1" title="S" selected="selected">40x60cm</option>
+                                                <option value="2" title="M">60x90cm</option>
+                                                <option value="3" title="L">80x120cm</option>
+                                            </select> --}}
+                                            <select name="size" class="form-control" id="size">
+
+                                            </select>
                                         </div>
-                                        <button class="add-to-cart" type="submit">Add to cart</button>
-                                    </form>
-                                </div>
+                                        <div class="produt-variants-size">
+                                            <label>Color:</label>
+                                            {{-- <select class="nice-select" name="color">
+                                                <option value="1" title="S" selected="selected">40x60cm</option>
+                                                <option value="2" title="M">60x90cm</option>
+                                                <option value="3" title="L">80x120cm</option>
+                                            </select> --}}
+                                            <select name="color" class="form-control" id="color">
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="single-add-to-cart">
+                                            <div class="quantity">
+                                                <label>Quantity</label>
+                                                <div class="cart-plus-minus">
+                                                    <input class="cart-plus-minus-box" value="1" type="number" name="quantity">
+                                                    <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
+                                                    <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
+                                                </div>
+                                            </div>
+                                            <button class="add-to-cart" type="submit">Add to cart</button>
+                                    </div>
+                                </form>
                                 <div class="product-additional-info pt-25">
                                     <a class="wishlist-btn" href="wishlist.html"><i class="fa fa-heart-o"></i>Add to wishlist</a>
                                     <div class="product-social-sharing pt-25">
@@ -640,25 +661,11 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-     $('.addcart').on('click', function(){
+    $('.addcart').on('click', function(){
         var id = $(this).data('id');
-        //alert(id);
-            $.ajax({
-                url: " {{ url('/add/to/cart/') }}/"+id,
-                type:"GET",
-                datType:"json",
-                success:function(data){
-                    if ($.isEmptyObject(data.error)) {
-                        toastr.success(data.messege);
-                    }else{
-                        toastr.warning(data.messege);
-                    }
-                },
-                error: function(data) {
-                    //console.log('Error:', data);
-                    toastr.error('Error');
-                }
-        });
+       // console.log(id);
+        $('#myModal').modal('show');
+        productview(id);
     });
 });
     function productview(id) {
@@ -667,28 +674,48 @@ $(document).ready(function(){
             type: "GET",
             dataType: "json",
             success: function (data) {
-                console.log(data);
-                $('#pcode').text(data.product.product_code);
-                $('#pcat').text(data.product.category_name);
-                $('#psub').text(data.product.subcategory_name);
-                $('#pbrand').text(data.product.brand_name);
-                $('#pname').text(data.product.product_name);
-                $('#pimage').attr('src', data.product.image_one);
+                //console.log(data);
+                $('#product_code').text(data.product.product_code);
+                $('#product_name').text(data.product.product_name);
+                $('.product_image1').attr('src', 'upload/product/'+data.product.image_one);
+                $('.product_image2').attr('src', 'upload/product/'+data.product.image_two);
+                $('.product_image3').attr('src', 'upload/product/'+data.product.image_three);
                 $('#product_id').val(data.product.id);
+                let discount_price = data.product.discount_price;
+                let selling_price = data.product.selling_price;
 
-                var d = $('select[name="color"]').empty();
+                if(discount_price==null){
+                    $('#discount_price').text('');
+                    $('#selling_price').text(new Intl.NumberFormat().format(selling_price) + ' '+'VND');
+                    // + 'VND');
+                }
+                else{
+                    $('#discount_price').text(new Intl.NumberFormat().format(selling_price) + ' '+'VND');
+                    $('#selling_price').text(new Intl.NumberFormat().format(discount_price) + ' '+'VND');
+                }
+
+
+                var details = data.product.product_details;
+                //console.log(details);
+                var $geek = $("#geek"),
+                // str = "A <b>computer science portal</b> for <b>geeks</b>",
+                str = details,
+                html = $.parseHTML(str);
+                $geek.append(html);
+
+
+                $('select[name="color"]').empty();
                 $.each(data.color, function (key, value) {
                     $('select[name="color"]').append('<option value="' + value + '">' + value + '</option>');
                 });
 
-                var d = $('select[name="size"]').empty();
+                $('#size').empty();
                 $.each(data.size, function (key, value) {
-                    $('select[name="size"]').append('<option value="' + value + '">' + value + '</option>');
+                    $('#size').append('<option value="' + value + '">' + value + '</option>');
                 });
 
-
             }
-        })
+        });
     }
 </script>
 

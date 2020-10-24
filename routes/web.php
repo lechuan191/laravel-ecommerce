@@ -70,7 +70,14 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/change-status','Admin\ProductController@changeStatus')->name('product.change.status');
     });
 });
-Route::get('/product/details/{id}', 'ProductController@ProductView')->name('product.details');
-Route::get('/cart/product/view/{id}', 'CartController@viewProduct');
-Route::get('add/to/cart/{id}', 'CartController@AddCart');
+Route::get('cart/product/view/{id}', 'CartController@viewProduct');
+Route::post('add/cart', 'CartController@addToCartModal')->name('add.cart');
 Route::get('check', 'CartController@check');
+Route::get('remove/cart{id}', 'CartController@removeCart')->name('remove.cart');
+Route::get('show/cart', 'CartController@showCart')->name('show.cart');
+Route::post('update/cart', 'CartController@updateQuantityCart')->name('update.cart');
+
+
+
+Route::get('product/details/{id}', 'ProductController@productDetail')->name('product.details');
+Route::post('product/details/add/cart/{id}', 'ProductController@addToCartDetail');
